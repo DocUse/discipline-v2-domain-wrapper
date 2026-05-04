@@ -14,7 +14,6 @@
         --panel: rgba(15, 23, 42, 0.82);
         --line: rgba(148, 163, 184, 0.22);
         --text: #e5eef8;
-        --muted: #93a5be;
         --card: #ffffff;
       }
 
@@ -31,92 +30,54 @@
       .layout {
         min-height: 100vh;
         display: grid;
-        grid-template-rows: auto 1fr;
-      }
-
-      .topbar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-        padding: 14px 18px;
-        background: var(--panel);
-        border-bottom: 1px solid var(--line);
-        backdrop-filter: blur(10px);
-      }
-
-      .title {
-        margin: 0;
-        font-size: 18px;
-        font-weight: 700;
-      }
-
-      .subtitle {
-        margin: 4px 0 0;
-        color: var(--muted);
-        font-size: 13px;
-      }
-
-      .nav {
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-      }
-
-      .nav a {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 38px;
-        padding: 0 14px;
-        border-radius: 10px;
-        text-decoration: none;
-        background: rgba(37, 99, 235, 0.14);
-        border: 1px solid rgba(96, 165, 250, 0.24);
-        color: #dbeafe;
-        font-weight: 700;
+        grid-template-rows: 1fr auto;
       }
 
       iframe {
         display: block;
         width: 100%;
-        height: calc(100vh - 77px);
+        height: 100%;
+        min-height: calc(100vh - 56px);
         border: 0;
         background: var(--card);
       }
 
-      @media (max-width: 800px) {
-        .topbar {
-          align-items: flex-start;
-          flex-direction: column;
-        }
+      .footer {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        padding: 12px 16px;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-left: 0;
+        border-right: 0;
+        border-bottom: 0;
+        backdrop-filter: blur(10px);
+      }
 
-        iframe {
-          height: calc(100vh - 135px);
-        }
+      .footer a {
+        font-size: 13px;
+        text-decoration: none;
+        color: #bfdbfe;
+        white-space: nowrap;
       }
     </style>
   </head>
   <body>
     <div class="layout">
-      <header class="topbar">
-        <div>
-          <h1 class="title">Инструкция по кабинету</h1>
-          <p class="subtitle">Wrapper-страница для guide-режима из Google Apps Script.</p>
-        </div>
-        <nav class="nav" aria-label="Навигация">
-          <a href="./">Кабинет</a>
-          <a href="privacy-policy.html">Privacy Policy</a>
-          <a href="terms-of-service.html">Terms of Service</a>
-        </nav>
-      </header>
-
       <iframe
         id="guide-frame"
         title="Инструкция по кабинету"
         loading="eager"
         referrerpolicy="no-referrer-when-downgrade"
       ></iframe>
+
+      <footer class="footer">
+        <a href="./">Кабинет</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-of-service.html">Terms of Service</a>
+      </footer>
     </div>
 
     <script>
