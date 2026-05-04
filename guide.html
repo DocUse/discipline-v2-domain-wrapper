@@ -38,69 +38,35 @@
       .hero {
         display: grid;
         place-items: center;
-        padding: 32px 20px;
+        padding: 24px 16px;
       }
 
       .card {
-        width: min(560px, 100%);
+        width: min(380px, 100%);
         background: var(--card);
         color: #0f172a;
         border-radius: 18px;
-        padding: 28px 24px;
+        padding: 24px 20px;
+        text-align: center;
         box-shadow: 0 20px 50px rgba(15, 23, 42, 0.28);
       }
 
-      .eyebrow {
+      .status {
         margin: 0 0 10px;
-        font-size: 12px;
+        font-size: 20px;
         font-weight: 700;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
+        line-height: 1.3;
+      }
+
+      .hint {
+        margin: 0;
+        font-size: 14px;
+        color: #64748b;
+      }
+
+      .hint a {
         color: #2563eb;
-      }
-
-      h1 {
-        margin: 0 0 12px;
-        font-size: 28px;
-        line-height: 1.2;
-      }
-
-      p {
-        margin: 0 0 14px;
-      }
-
-      .muted {
-        color: #475569;
-      }
-
-      .actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-top: 20px;
-      }
-
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 44px;
-        padding: 0 18px;
-        border-radius: 12px;
-        border: 1px solid transparent;
         text-decoration: none;
-        font-weight: 700;
-      }
-
-      .btn-primary {
-        background: #2563eb;
-        color: #ffffff;
-      }
-
-      .btn-secondary {
-        background: #ffffff;
-        color: #2563eb;
-        border-color: #bfdbfe;
       }
 
       .footer {
@@ -129,20 +95,11 @@
     <div class="layout">
       <main class="hero">
         <section class="card">
-          <div class="eyebrow">NaimTech</div>
-          <h1>Переходим к инструкции</h1>
-          <p>
-            Инструкция открывается напрямую в Google Apps Script, чтобы избежать
-            проблем со входом на мобильных устройствах.
+          <p class="status" id="status-text">Открываем инструкцию...</p>
+          <p class="hint">
+            Если не открылось,
+            <a id="open-guide-link" href="#">нажмите сюда</a>.
           </p>
-          <p class="muted" id="status-text">
-            Если переход не произошел автоматически, откройте инструкцию вручную.
-          </p>
-
-          <div class="actions">
-            <a class="btn btn-primary" id="open-guide-link" href="#">Открыть инструкцию</a>
-            <a class="btn btn-secondary" href="./">Кабинет</a>
-          </div>
         </section>
       </main>
 
@@ -162,7 +119,7 @@
           openGuideLink.href = EXEC_URL;
         }
         if (statusText) {
-          statusText.textContent = 'Выполняем безопасный переход к инструкции...';
+          statusText.textContent = 'Открываем инструкцию...';
         }
         window.location.replace(EXEC_URL);
       })();
