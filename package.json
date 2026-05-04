@@ -4,6 +4,6 @@
   "private": true,
   "description": "Static domain wrapper for the Discipline v2 Google Apps Script portal",
   "scripts": {
-    "build": "mkdir -p dist && cp *.html dist/"
+    "build": "mkdir -p dist && cp *.html dist/ && cp favicon-32.png dist/"
   }
 }
