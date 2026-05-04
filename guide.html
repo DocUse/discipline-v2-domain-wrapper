@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Дисциплина v2 | Инструкция</title>
+    <meta
+      name="description"
+      content="Доменная страница инструкции для кабинета Дисциплина v2."
+    >
+    <style>
+      :root {
+        --bg: #0b1120;
+        --panel: rgba(15, 23, 42, 0.82);
+        --line: rgba(148, 163, 184, 0.22);
+        --text: #e5eef8;
+        --muted: #93a5be;
+        --card: #ffffff;
+      }
+
+      * { box-sizing: border-box; }
+
+      html, body {
+        margin: 0;
+        min-height: 100%;
+        background: var(--bg);
+        color: var(--text);
+        font: 15px/1.5 Arial, sans-serif;
+      }
+
+      .layout {
+        min-height: 100vh;
+        display: grid;
+        grid-template-rows: auto 1fr;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 14px 18px;
+        background: var(--panel);
+        border-bottom: 1px solid var(--line);
+        backdrop-filter: blur(10px);
+      }
+
+      .title {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      .subtitle {
+        margin: 4px 0 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .nav {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .nav a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 38px;
+        padding: 0 14px;
+        border-radius: 10px;
+        text-decoration: none;
+        background: rgba(37, 99, 235, 0.14);
+        border: 1px solid rgba(96, 165, 250, 0.24);
+        color: #dbeafe;
+        font-weight: 700;
+      }
+
+      iframe {
+        display: block;
+        width: 100%;
+        height: calc(100vh - 77px);
+        border: 0;
+        background: var(--card);
+      }
+
+      @media (max-width: 800px) {
+        .topbar {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        iframe {
+          height: calc(100vh - 135px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout">
+      <header class="topbar">
+        <div>
+          <h1 class="title">Инструкция по кабинету</h1>
+          <p class="subtitle">Wrapper-страница для guide-режима из Google Apps Script.</p>
+        </div>
+        <nav class="nav" aria-label="Навигация">
+          <a href="./">Кабинет</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms-of-service.html">Terms of Service</a>
+        </nav>
+      </header>
+
+      <iframe
+        id="guide-frame"
+        title="Инструкция по кабинету"
+        loading="eager"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+
+    <script>
+      (function () {
+        var EXEC_URL = 'https://script.google.com/macros/s/AKfycbwUQQ4XtYyajt6VFcldRTzCmU3PcFlVtQUdBQoJR3SafewHXyZ0XKkaFlk7HZsDia929Q/exec?page=guide';
+        var iframe = document.getElementById('guide-frame');
+        if (!iframe) return;
+        iframe.src = EXEC_URL;
+      })();
+    </script>
+  </body>
+</html>

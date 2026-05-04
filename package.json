@@ -1,0 +1,9 @@
+{
+  "name": "discipline-v2-domain-wrapper",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static domain wrapper for the Discipline v2 Google Apps Script portal",
+  "scripts": {
+    "build": "mkdir -p dist && cp *.html dist/"
+  }
+}

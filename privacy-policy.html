@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Privacy Policy | Discipline v2 Portal</title>
+    <style>
+      :root {
+        --card: #ffffff;
+        --text: #1f2937;
+        --muted: #6b7280;
+        --line: #dbe3ee;
+        --brand: #2563eb;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        font: 16px/1.7 Arial, sans-serif;
+        color: var(--text);
+      }
+
+      .wrap {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 32px 20px 48px;
+      }
+
+      .card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 28px;
+      }
+
+      h1, h2 {
+        margin: 0 0 16px;
+        line-height: 1.25;
+      }
+
+      h1 { font-size: 32px; }
+      h2 { font-size: 22px; margin-top: 28px; }
+      p { margin: 0 0 14px; }
+      ul { margin: 0 0 16px 20px; }
+      a { color: var(--brand); }
+      .muted { color: var(--muted); }
+
+      .nav {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 24px;
+      }
+
+      .nav a {
+        display: inline-block;
+        padding: 10px 14px;
+        border-radius: 10px;
+        text-decoration: none;
+        background: var(--brand);
+        color: #fff;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="card">
+        <h1>Privacy Policy</h1>
+        <p class="muted">Last updated: 04.05.2026</p>
+
+        <p>
+          This page describes how the public domain wrapper for the Discipline v2
+          recruiter portal handles data.
+        </p>
+
+        <h2>What this site does</h2>
+        <p>
+          This site is a static wrapper that embeds the published Google Apps Script
+          recruiter portal in an iframe.
+        </p>
+
+        <h2>What data may be processed</h2>
+        <ul>
+          <li>the current page URL and its query parameters;</li>
+          <li>Google account identity resolved inside the Google Apps Script app;</li>
+          <li>portal data read from the internal Google Spreadsheet.</li>
+        </ul>
+
+        <h2>How access is controlled</h2>
+        <p>
+          Access is not granted by this wrapper itself. Access is checked inside the
+          Google Apps Script application using the employee Google email and internal
+          access flags from the service spreadsheet.
+        </p>
+
+        <h2>Contact</h2>
+        <p>
+          For questions about access or data handling, contact
+          <a href="mailto:skeepowski@gmail.com">skeepowski@gmail.com</a>.
+        </p>
+
+        <div class="nav">
+          <a href="./">Portal</a>
+          <a href="guide.html">Guide</a>
+          <a href="terms-of-service.html">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

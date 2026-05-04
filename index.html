@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Дисциплина v2 | Личный кабинет</title>
+    <meta
+      name="description"
+      content="Доменная оболочка для личного кабинета Дисциплина v2 поверх Google Apps Script."
+    >
+    <style>
+      :root {
+        --bg: #0b1120;
+        --panel: rgba(15, 23, 42, 0.82);
+        --line: rgba(148, 163, 184, 0.22);
+        --text: #e5eef8;
+        --muted: #93a5be;
+        --brand: #2563eb;
+        --card: #ffffff;
+      }
+
+      * { box-sizing: border-box; }
+
+      html, body {
+        margin: 0;
+        min-height: 100%;
+        background: var(--bg);
+        color: var(--text);
+        font: 15px/1.5 Arial, sans-serif;
+      }
+
+      body {
+        min-width: 320px;
+      }
+
+      .layout {
+        min-height: 100vh;
+        display: grid;
+        grid-template-rows: auto 1fr;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 14px 18px;
+        background: var(--panel);
+        border-bottom: 1px solid var(--line);
+        backdrop-filter: blur(10px);
+      }
+
+      .brand {
+        min-width: 0;
+      }
+
+      .brand-tag {
+        display: inline-block;
+        margin-bottom: 4px;
+        color: #60a5fa;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .brand-title {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      .brand-subtitle {
+        margin: 4px 0 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .nav {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .nav a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 38px;
+        padding: 0 14px;
+        border-radius: 10px;
+        text-decoration: none;
+        background: rgba(37, 99, 235, 0.14);
+        border: 1px solid rgba(96, 165, 250, 0.24);
+        color: #dbeafe;
+        font-weight: 700;
+      }
+
+      .nav a:hover {
+        background: rgba(37, 99, 235, 0.24);
+      }
+
+      .frame-shell {
+        position: relative;
+        min-height: 0;
+      }
+
+      iframe {
+        display: block;
+        width: 100%;
+        height: calc(100vh - 77px);
+        border: 0;
+        background: var(--card);
+      }
+
+      .fallback {
+        position: absolute;
+        inset: 18px 18px auto;
+        max-width: 460px;
+        padding: 14px 16px;
+        border-radius: 14px;
+        background: rgba(15, 23, 42, 0.9);
+        border: 1px solid var(--line);
+        color: var(--muted);
+        box-shadow: 0 12px 30px rgba(2, 6, 23, 0.28);
+      }
+
+      .fallback strong {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--text);
+      }
+
+      .fallback a {
+        color: #bfdbfe;
+      }
+
+      @media (max-width: 800px) {
+        .topbar {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        iframe {
+          height: calc(100vh - 135px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-tag">Дисциплина v2</div>
+          <h1 class="brand-title">Личный кабинет рекрутера</h1>
+          <p class="brand-subtitle">Внешний доменный wrapper для опубликованного Google Apps Script web app.</p>
+        </div>
+        <nav class="nav" aria-label="Навигация">
+          <a href="guide.html">Инструкция</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms-of-service.html">Terms of Service</a>
+        </nav>
+      </header>
+
+      <main class="frame-shell">
+        <div class="fallback">
+          <strong>Если кабинет не загрузился внутри страницы</strong>
+          <span>
+            Откройте web app напрямую:
+            <a id="direct-link" href="#" target="_blank" rel="noopener noreferrer">перейти в Google Apps Script</a>
+          </span>
+        </div>
+
+        <iframe
+          id="portal-frame"
+          title="Личный кабинет рекрутера"
+          loading="eager"
+          referrerpolicy="no-referrer-when-downgrade"
+          allow="clipboard-write"
+        ></iframe>
+      </main>
+    </div>
+
+    <script>
+      (function () {
+        var EXEC_URL = 'https://script.google.com/macros/s/AKfycbwUQQ4XtYyajt6VFcldRTzCmU3PcFlVtQUdBQoJR3SafewHXyZ0XKkaFlk7HZsDia929Q/exec';
+        var iframe = document.getElementById('portal-frame');
+        var directLink = document.getElementById('direct-link');
+        var wrapperUrl = new URL(window.location.href);
+        var appUrl = new URL(EXEC_URL);
+
+        if (!iframe) return;
+
+        if (wrapperUrl.search) {
+          appUrl.search = wrapperUrl.search;
+        }
+
+        iframe.src = appUrl.toString();
+
+        if (directLink) {
+          directLink.href = appUrl.toString();
+        }
+
+        if (wrapperUrl.searchParams.has('login_token')) {
+          wrapperUrl.searchParams.delete('login_token');
+          var nextUrl =
+            wrapperUrl.pathname +
+            (wrapperUrl.search ? wrapperUrl.search : '') +
+            (wrapperUrl.hash ? wrapperUrl.hash : '');
+          window.history.replaceState(null, '', nextUrl);
+        }
+      })();
+    </script>
+  </body>
+</html>

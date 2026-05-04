@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Terms of Service | Discipline v2 Portal</title>
+    <style>
+      :root {
+        --card: #ffffff;
+        --text: #1f2937;
+        --muted: #6b7280;
+        --line: #dbe3ee;
+        --brand: #2563eb;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        font: 16px/1.7 Arial, sans-serif;
+        color: var(--text);
+      }
+
+      .wrap {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 32px 20px 48px;
+      }
+
+      .card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 28px;
+      }
+
+      h1, h2 {
+        margin: 0 0 16px;
+        line-height: 1.25;
+      }
+
+      h1 { font-size: 32px; }
+      h2 { font-size: 22px; margin-top: 28px; }
+      p { margin: 0 0 14px; }
+      ul { margin: 0 0 16px 20px; }
+      a { color: var(--brand); }
+      .muted { color: var(--muted); }
+
+      .nav {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 24px;
+      }
+
+      .nav a {
+        display: inline-block;
+        padding: 10px 14px;
+        border-radius: 10px;
+        text-decoration: none;
+        background: var(--brand);
+        color: #fff;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="card">
+        <h1>Terms of Service</h1>
+        <p class="muted">Last updated: 04.05.2026</p>
+
+        <p>
+          These terms apply to the public wrapper site used to open the Discipline v2
+          recruiter portal on a custom domain.
+        </p>
+
+        <h2>Purpose</h2>
+        <p>
+          The site provides a branded entry point and embeds the published Google Apps
+          Script portal inside an iframe.
+        </p>
+
+        <h2>Access</h2>
+        <p>
+          Portal access is controlled by the underlying Google Apps Script application,
+          not by this static site.
+        </p>
+
+        <h2>Availability</h2>
+        <p>
+          The wrapper depends on the availability of the published Google Apps Script
+          web application and the related Google services.
+        </p>
+
+        <h2>Internal use</h2>
+        <p>
+          This portal is intended for internal work scenarios and for users who were
+          granted access in the service spreadsheet.
+        </p>
+
+        <div class="nav">
+          <a href="./">Portal</a>
+          <a href="guide.html">Guide</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
